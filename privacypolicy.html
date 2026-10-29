@@ -1,24 +1,63 @@
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#080f1f" />
-  <meta name="description" content="Learn how StudyBolt protects your privacy, study materials, and personal information." />
-  <title>Privacy Policy | StudyBolt</title>
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#080f1f" name="theme-color"/>
+<meta content="Learn how StudyBolt protects your privacy, study materials, and personal information." name="description"/>
+<title>Privacy Policy | StudyBolt</title>
+<style>
     :root {
       --bg: #080f1f;
       --surface: #101b30;
+      --surface-2: #15233b;
+      --surface-soft: rgba(16, 27, 48, .65);
       --line: rgba(173, 200, 255, .13);
       --text: #f4f7ff;
       --muted: #9cabc4;
+      --text-soft: #aab9d1;
+      --text-strong: #e6efff;
       --blue: #79aaff;
       --cyan: #65e5e1;
       --violet: #af9aff;
+      --hero-glow-a: rgba(48, 93, 191, .22);
+      --hero-glow-b: rgba(26, 171, 181, .08);
+      --intro-grad-a: rgba(87, 145, 255, .13);
+      --intro-grad-b: rgba(101, 229, 225, .045);
+      --card-grad-a: rgba(21, 35, 59, .86);
+      --card-grad-b: rgba(13, 24, 43, .87);
+      --contact-bg: #111e32;
+      --contact-glow: var(--contact-glow);
       --content: 1100px;
+      --theme-toggle-bg: rgba(255,255,255,.04);
+      --theme-toggle-border: rgba(173, 200, 255, .16);
+    }
+
+    body[data-theme="light"] {
+      --bg: #f5f8ff;
+      --surface: #ffffff;
+      --surface-2: #ffffff;
+      --surface-soft: rgba(255, 255, 255, .84);
+      --line: rgba(95, 122, 176, .18);
+      --text: #12233f;
+      --muted: #5f6f8e;
+      --text-soft: #42526f;
+      --text-strong: #0f2345;
+      --blue: #4f7fff;
+      --cyan: #1ebfc1;
+      --violet: #8970ff;
+      --hero-glow-a: rgba(110, 146, 255, .22);
+      --hero-glow-b: rgba(37, 189, 181, .12);
+      --intro-grad-a: rgba(115, 152, 255, .10);
+      --intro-grad-b: rgba(26, 181, 173, .05);
+      --card-grad-a: rgba(255, 255, 255, .96);
+      --card-grad-b: rgba(246, 249, 255, .98);
+      --contact-bg: #ffffff;
+      --contact-glow: rgba(114, 157, 255, .10);
+      --theme-toggle-bg: rgba(18, 35, 63, .04);
+      --theme-toggle-border: rgba(95, 122, 176, .16);
     }
 
     * { box-sizing: border-box; }
@@ -42,10 +81,10 @@
       z-index: -2;
       background:
         radial-gradient(ellipse at 50% 0%,
-          rgba(48, 93, 191, .22), transparent 55%),
+          var(--hero-glow-a), transparent 55%),
         radial-gradient(ellipse at 95% 45%,
-          rgba(26, 171, 181, .08), transparent 45%),
-        #080f1f;
+          var(--hero-glow-b), transparent 45%),
+        var(--bg);
     }
 
     a { color: var(--cyan); }
@@ -64,7 +103,7 @@
       top: 0;
       z-index: 50;
       border-bottom: 1px solid var(--line);
-      background: rgba(8, 15, 31, .78);
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
       backdrop-filter: blur(22px);
       -webkit-backdrop-filter: blur(22px);
     }
@@ -127,6 +166,130 @@
       font-size: 12px;
       font-weight: 700;
       white-space: nowrap;
+    }
+
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--theme-toggle-border);
+      background: var(--theme-toggle-bg);
+      color: var(--text);
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      border-color: color-mix(in srgb, var(--cyan) 28%, var(--theme-toggle-border));
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 2px solid color-mix(in srgb, var(--blue) 60%, white 40%);
+      outline-offset: 2px;
+    }
+
+    .theme-toggle-track {
+      position: relative;
+      width: 46px;
+      height: 25px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, rgba(121, 170, 255, .30), rgba(101, 229, 225, .25));
+      border: 1px solid color-mix(in srgb, var(--blue) 28%, transparent);
+      flex-shrink: 0;
+    }
+
+    .theme-toggle-thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffffff, #d8e6ff);
+      box-shadow: 0 3px 10px rgba(0,0,0,.18);
+      transition: transform .25s ease;
+    }
+
+    body[data-theme="light"] .theme-toggle-thumb {
+      transform: translateX(21px);
+      background: linear-gradient(135deg, #e4f6ff, #8acbff);
+    }
+
+    .theme-toggle-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .hero-mark {
+      position: relative;
+      width: 132px;
+      height: 138px;
+      display: grid;
+      place-items: center;
+      filter: drop-shadow(0 20px 30px rgba(66, 159, 255, .20));
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .hero-mark svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .book-cover {
+      fill: rgba(34, 83, 153, .20);
+      stroke: url(#bookGradient);
+      stroke-width: 3;
+      stroke-linejoin: round;
+    }
+
+    .book-spine {
+      fill: rgba(111, 149, 244, .16);
+      stroke: rgba(155, 186, 255, .75);
+      stroke-width: 2.2;
+      stroke-linejoin: round;
+    }
+
+    .book-pages {
+      fill: rgba(244, 247, 255, .08);
+      stroke: rgba(185, 214, 255, .45);
+      stroke-width: 1.6;
+      stroke-linejoin: round;
+    }
+
+    body[data-theme="light"] .book-pages {
+      fill: rgba(255,255,255,.85);
+      stroke: rgba(141, 168, 224, .55);
+    }
+
+    body[data-theme="light"] .book-cover {
+      fill: rgba(125, 159, 255, .12);
+    }
+
+    .book-line {
+      stroke: rgba(145, 214, 255, .60);
+      stroke-width: 1.8;
+      stroke-linecap: round;
+    }
+
+    .bolt-shape {
+      fill: url(#boltGradient);
+      filter: drop-shadow(0 0 16px rgba(111, 240, 231, .24));
+    }
+
+    .friendly-dot {
+      fill: #7ce9e0;
+      opacity: .95;
+    }
+
+    body[data-theme="light"] .friendly-dot {
+      fill: #70a6ff;
     }
 
     /* HERO */
@@ -266,7 +429,7 @@
       padding: 7px 14px;
       border: 1px solid var(--line);
       border-radius: 30px;
-      background: rgba(255,255,255,.025);
+      background: color-mix(in srgb, var(--surface) 82%, transparent);
     }
 
     /* CONTENT */
@@ -283,8 +446,8 @@
       padding: 28px 30px;
       background:
         linear-gradient(110deg,
-          rgba(87, 145, 255, .13),
-          rgba(101, 229, 225, .045));
+          var(--intro-grad-a),
+          var(--intro-grad-b));
       border: 1px solid rgba(119, 176, 255, .23);
       border-radius: 22px;
       margin-bottom: 32px;
@@ -299,8 +462,8 @@
       font-size: 26px;
       border-radius: 16px;
       color: #9ff5ed;
-      background: #65e5e112;
-      border: 1px solid #65e5e12c;
+      background: color-mix(in srgb, var(--cyan) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--cyan) 20%, transparent);
     }
 
     .intro-card h2 {
@@ -312,7 +475,7 @@
     .intro-card p {
       margin: 0;
       font-size: 13px;
-      color: #b3c2d9;
+      color: var(--text-soft);
     }
 
     .layout {
@@ -326,7 +489,7 @@
       position: sticky;
       top: 94px;
       border: 1px solid var(--line);
-      background: rgba(16, 27, 48, .65);
+      background: var(--surface-soft);
       border-radius: 19px;
       padding: 19px 13px;
     }
@@ -365,8 +528,8 @@
       border: 1px solid var(--line);
       border-radius: 20px;
       background: linear-gradient(145deg,
-        rgba(21, 35, 59, .86),
-        rgba(13, 24, 43, .87));
+        var(--card-grad-a),
+        var(--card-grad-b));
       scroll-margin-top: 94px;
       transition: border-color .25s, transform .25s;
     }
@@ -403,14 +566,14 @@
     }
 
     h3 {
-      color: #e5ecfc;
+      color: var(--text-strong);
       font-size: 14px;
       margin: 22px 0 8px;
     }
 
     .policy-section p,
     .policy-section li {
-      color: #aab9d1;
+      color: var(--text-soft);
       font-size: 13.5px;
       line-height: 1.9;
     }
@@ -424,15 +587,15 @@
 
     .policy-section li { padding-left: 3px; margin: 5px 0; }
 
-    .policy-section strong { color: #e6efff; }
+    .policy-section strong { color: var(--text-strong); }
 
     .info-box {
       margin-top: 19px;
       padding: 16px 18px;
       border-radius: 12px;
       border: 1px solid rgba(101, 229, 225, .18);
-      background: rgba(101, 229, 225, .045);
-      color: #bfe5e8;
+      background: color-mix(in srgb, var(--cyan) 12%, transparent);
+      color: color-mix(in srgb, var(--text) 82%, var(--cyan) 18%);
       font-size: 12.5px;
       line-height: 1.85;
     }
@@ -445,8 +608,8 @@
     }
 
     .data-table th {
-      color: #d7e8ff;
-      background: rgba(108, 160, 245, .10);
+      color: var(--text-strong);
+      background: color-mix(in srgb, var(--blue) 12%, transparent);
       text-align: left;
       font-weight: 700;
     }
@@ -460,7 +623,7 @@
     }
 
     .data-table td {
-      color: #aab9d1;
+      color: var(--text-soft);
     }
 
     .contact-card {
@@ -470,7 +633,7 @@
       border-radius: 23px;
       background:
         radial-gradient(ellipse at 50% 0%,
-          rgba(61, 151, 192, .12), transparent 72%),
+          var(--contact-glow), transparent 72%),
         #111e32;
     }
 
@@ -508,13 +671,13 @@
       border-top: 1px solid var(--line);
       padding: 27px 24px;
       text-align: center;
-      color: #7788a5;
+      color: var(--muted);
       font-size: 12px;
     }
 
     .footer-brand {
       font-size: 16px;
-      color: #dceaff;
+      color: var(--text-strong);
       font-weight: 800;
       margin-bottom: 7px;
     }
@@ -524,7 +687,7 @@
     }
 
     .footer-links a {
-      color: #98aac6;
+      color: var(--muted);
       margin: 0 10px;
       text-decoration: none;
     }
@@ -595,6 +758,8 @@
 
       .nav-link { display: none; }
 
+      .theme-toggle-label { display: none; }
+
       .nav-inner { padding: 13px 18px; }
 
       .container { padding: 0 15px 60px; }
@@ -649,750 +814,661 @@
 
       .container { padding: 0; }
     }
-  </style>
+  
+
+    body[data-theme="light"] .nav-pill {
+      color: #0f6a72;
+      background: rgba(30, 191, 193, .07);
+      border-color: rgba(30, 191, 193, .18);
+    }
+
+    body[data-theme="light"] .brand,
+    body[data-theme="light"] .nav-link:hover,
+    body[data-theme="light"] .contact-card h2 {
+      color: var(--text-strong);
+    }
+
+    body[data-theme="light"] .nav-link,
+    body[data-theme="light"] .footer-links a,
+    body[data-theme="light"] .updated,
+    body[data-theme="light"] .contact-card p {
+      color: var(--muted);
+    }
+
+    body[data-theme="light"] .updated,
+    body[data-theme="light"] .sidebar,
+    body[data-theme="light"] .policy-section,
+    body[data-theme="light"] .intro-card,
+    body[data-theme="light"] .contact-card {
+      box-shadow: 0 10px 32px rgba(67, 99, 160, .08);
+    }
+
+    body[data-theme="light"] .brand-icon {
+      color: #0e2341;
+      box-shadow: 0 7px 22px rgba(79, 127, 255, .18);
+    }
+
+    body[data-theme="light"] .section-icon,
+    body[data-theme="light"] .intro-icon {
+      color: #397be4;
+      background: rgba(79, 127, 255, .07);
+      border-color: rgba(79, 127, 255, .14);
+    }
+
+    body[data-theme="light"] .info-box {
+      background: rgba(30, 191, 193, .05);
+      color: #355b66;
+    }
+</style>
 </head>
-
 <body>
-
-  <!-- TOP BAR -->
-  <nav class="nav" aria-label="Main navigation">
-    <div class="nav-inner">
-      <a class="brand" href="#top">
-        <span class="brand-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2.5"
-               stroke-linecap="round" stroke-linejoin="round">
-            <path d="M13 2 4.5 13h6.8L10 22l9.5-12h-7L13 2Z"/>
-          </svg>
-        </span>
+<!-- TOP BAR -->
+<nav aria-label="Main navigation" class="nav">
+<div class="nav-inner">
+<a class="brand" href="#top">
+<span aria-hidden="true" class="brand-icon">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M13 2 4.5 13h6.8L10 22l9.5-12h-7L13 2Z"></path>
+</svg>
+</span>
         StudyBolt
       </a>
+<div class="nav-actions">
+<a class="nav-link" href="#overview">Overview</a>
+<a class="nav-link" href="#contact">Contact</a>
 
-      <div class="nav-actions">
-        <a href="#overview" class="nav-link">Overview</a>
-        <a href="#contact" class="nav-link">Contact</a>
-        <span class="nav-pill">Privacy Center</span>
-      </div>
-    </div>
-  </nav>
+<button aria-label="Switch to light mode" aria-pressed="false" class="theme-toggle" id="themeToggle" title="Toggle light and dark mode" type="button">
+<span aria-hidden="true" class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+<span class="theme-toggle-label">Dark mode</span>
+</button>
+<span class="nav-pill">Privacy Center</span>
+</div>
+</div>
+</nav>
+<!-- HERO -->
+<header class="hero" id="top">
+<div aria-hidden="true" class="shield-scene">
+<div class="orbit">
+<span class="orbit-dot"></span>
+</div>
+<div class="orbit second"></div>
 
-  <!-- HERO -->
-  <header class="hero" id="top">
-    <div class="shield-scene" aria-hidden="true">
-      <div class="orbit">
-        <span class="orbit-dot"></span>
-      </div>
-      <div class="orbit second"></div>
+<div aria-hidden="true" class="hero-mark">
+<svg role="presentation" viewBox="0 0 140 146">
+<defs>
+  <linearGradient id="bookGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#a8c4ff"/><stop offset="100%" stop-color="#6de6dd"/></linearGradient>
+  <linearGradient id="boltGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#a3ecff"/><stop offset="100%" stop-color="#60bdff"/></linearGradient>
+</defs>
+<circle class="friendly-dot" cx="19" cy="43" r="3.6"/>
+<circle class="friendly-dot" cx="123" cy="38" r="3"/>
+<circle class="friendly-dot" cx="116" cy="110" r="3.5"/>
+<!-- The open book: two leaf-shaped page groups, a clear center fold, and an upturned bottom edge. -->
+<path d="M12 34 Q39 19 69 36 L69 112 Q38 99 12 111 Z" fill="#284c89" stroke="url(#bookGradient)" stroke-width="3" stroke-linejoin="round"/>
+<path d="M69 36 Q98 19 128 34 L128 111 Q100 99 69 112 Z" fill="#224e78" stroke="url(#bookGradient)" stroke-width="3" stroke-linejoin="round"/>
+<path d="M19 42 Q43 31 65 44 L65 101 Q41 90 19 101 Z" class="book-pages"/>
+<path d="M73 44 Q96 31 121 42 L121 101 Q97 90 73 101 Z" class="book-pages"/>
+<path d="M69 36 L69 112" fill="none" stroke="#c5e7ff" stroke-width="3" stroke-linecap="round"/>
+<path d="M25 53 Q42 47 57 55 M25 64 Q42 58 57 66 M25 75 Q42 69 57 77" fill="none" class="book-line"/>
+<path d="M82 55 Q99 47 115 53 M82 66 Q99 58 115 64 M82 77 Q99 69 115 75" fill="none" class="book-line"/>
+<path class="bolt-shape" d="M76 50 L58 79 H72 L64 105 L91 68 H76 L82 50 Z"/>
+<path d="M12 111 Q39 100 69 117 Q100 100 128 111" fill="none" stroke="#8dc7ff" stroke-width="3" stroke-linecap="round"/>
+</svg>
+</div>
 
-      <div class="shield">
-        <svg viewBox="0 0 120 140">
-          <defs>
-            <linearGradient id="shieldGradient" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#9bbaff" />
-              <stop offset="100%" stop-color="#63eee1" />
-            </linearGradient>
-          </defs>
-          <path class="shield-path"
-            d="M60 9 L106 27 V65
-               C106 96 88 118 60 132
-               C32 118 14 96 14 65 V27 Z"/>
-          <path class="check-path" d="M38 68 L53 83 L83 52"/>
-        </svg>
-      </div>
-    </div>
-
-    <p class="eyebrow">Study with confidence</p>
-
-    <h1>Your privacy.<br>
-      <span class="gradient-text">Our priority.</span>
-    </h1>
-
-    <p class="hero-description">
+</div>
+<p class="eyebrow">Study with confidence</p>
+<h1>Your privacy.<br/>
+<span class="gradient-text">Our priority.</span>
+</h1>
+<p class="hero-description">
       Your learning journey is personal.
       This policy explains what information StudyBolt processes,
       why it is needed, and the choices available to you.
     </p>
-
-    <span class="updated">Effective October 26, 2026</span>
-  </header>
-
-  <main class="container">
-
-    <div class="intro-card reveal">
-      <div class="intro-icon" aria-hidden="true">✦</div>
-      <div>
-        <h2>Privacy should be easy to understand.</h2>
-        <p>
+<span class="updated">Effective October 29, 2026</span>
+</header>
+<main class="container">
+<div class="intro-card reveal">
+<div aria-hidden="true" class="intro-icon">✦</div>
+<div>
+<h2>Privacy should be easy to understand.</h2>
+<p>
           We believe you deserve a clear explanation of how
           your account information, study materials, and learning
           activity are handled. Explore each section below.
         </p>
-      </div>
-    </div>
-
-    <div class="layout">
-
-      <!-- CONTENT NAVIGATION -->
-      <aside class="sidebar" aria-label="Policy contents">
-        <p class="sidebar-label">On this page</p>
-        <a href="#overview">01. Overview</a>
-        <a href="#collection">02. Information we collect</a>
-        <a href="#study-content">03. Study materials and AI</a>
-        <a href="#usage">04. How we use information</a>
-        <a href="#sharing">05. Sharing and providers</a>
-        <a href="#security">06. Security</a>
-        <a href="#retention">07. Retention and deletion</a>
-        <a href="#choices">08. Your privacy choices</a>
-        <a href="#international">09. International processing</a>
-        <a href="#children">10. Children's privacy</a>
-        <a href="#rights">11. Legal privacy rights</a>
-        <a href="#changes">12. Policy changes</a>
-        <a href="#contact">13. Contact us</a>
-      </aside>
-
-      <div class="policy-content">
-
-        <!-- 1 -->
-        <section id="overview" class="policy-section reveal">
-          <div class="section-heading">
-            <span class="section-icon">✧</span>
-            <h2>01. Overview</h2>
-          </div>
-
-          <p>
-            Welcome to StudyBolt. This Privacy Policy
-            describes how the operator of StudyBolt
-            ("StudyBolt," "we," "us," or "our") handles
-            information when you access our mobile
-            applications, websites, and related services
-            (collectively, the "Service").
-          </p>
-
-          <p>
+</div>
+</div>
+<div class="layout">
+<!-- CONTENT NAVIGATION -->
+<aside aria-label="Policy contents" class="sidebar">
+<p class="sidebar-label">On this page</p>
+<a href="#overview">01. Overview</a>
+<a href="#collection">02. Information we collect</a>
+<a href="#study-content">03. Study materials and AI</a>
+<a href="#usage">04. How we use information</a>
+<a href="#sharing">05. Sharing and providers</a>
+<a href="#security">06. Security</a>
+<a href="#retention">07. Retention and deletion</a>
+<a href="#choices">08. Your privacy choices</a>
+<a href="#international">09. International processing</a>
+<a href="#children">10. Children's privacy</a>
+<a href="#rights">11. Legal privacy rights</a>
+<a href="#changes">12. Policy changes</a>
+<a href="#contact">13. Contact us</a>
+</aside>
+<div class="policy-content">
+<!-- 1 -->
+<section class="policy-section reveal" id="overview">
+<div class="section-heading">
+<span class="section-icon">✧</span>
+<h2>01. Overview</h2>
+</div>
+<p>StudyBolt is operated by <strong>Howard Tran</strong> ("StudyBolt," "we," "us," or "our"). This Privacy Policy describes how we handle information when you use the StudyBolt mobile application, related websites, and learning services (collectively, the "Service").</p>
+<p>
             StudyBolt helps students organize learning materials,
             generate study notes, build flashcards, create quizzes,
             listen to study content, plan study sessions, and
             track their learning progress.
           </p>
-
-          <p>
+<p>
             By using the Service, you acknowledge the
             information practices described in this policy.
             Where the law requires consent, we will request
             it separately.
           </p>
-
-          <div class="info-box">
+<div class="info-box">
             Our goal is to make learning more useful while
             giving you understandable choices about your
             information.
           </div>
-        </section>
-
-        <!-- 2 -->
-        <section id="collection" class="policy-section reveal">
-          <div class="section-heading">
-            <span class="section-icon">▤</span>
-            <h2>02. Information we collect</h2>
-          </div>
-
-          <p>
+</section>
+<!-- 2 -->
+<section class="policy-section reveal" id="collection">
+<div class="section-heading">
+<span class="section-icon">▤</span>
+<h2>02. Information we collect</h2>
+</div>
+<p>
             Depending on the features you use and the way
             the Service is configured, we may process the
             following categories of information.
           </p>
-
-          <div style="overflow-x:auto">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Category</th>
-                  <th>Examples</th>
-                  <th>Purpose</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Account information</td>
-                  <td>Email address, user identifier,
+<div style="overflow-x:auto">
+<table class="data-table">
+<thead>
+<tr>
+<th>Category</th>
+<th>Examples</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account information</td>
+<td>Email address, user identifier,
                     authentication details and profile information</td>
-                  <td>Sign-in, account management and security</td>
-                </tr>
-                <tr>
-                  <td>Study content</td>
-                  <td>Documents, slides, PDFs, notes,
+<td>Sign-in, account management and security</td>
+</tr>
+<tr>
+<td>Study content</td>
+<td>Documents, slides, PDFs, notes,
                     flashcards and quiz content</td>
-                  <td>Providing study features requested by you</td>
-                </tr>
-                <tr>
-                  <td>Learning activity</td>
-                  <td>Study sessions, progress, answers,
+<td>Providing study features requested by you</td>
+</tr>
+<tr>
+<td>Learning activity</td>
+<td>Study sessions, progress, answers,
                     plans and saved preferences</td>
-                  <td>Saving progress and personalizing learning</td>
-                </tr>
-                <tr>
-                  <td>Technical information</td>
-                  <td>App version, device type,
+<td>Saving progress and personalizing learning</td>
+</tr>
+<tr>
+<td>Technical information</td>
+<td>App version, device type,
                     error logs and diagnostic events</td>
-                  <td>Reliability, troubleshooting and security</td>
-                </tr>
-                <tr>
-                  <td>Purchase information</td>
-                  <td>Subscription status and
+<td>Reliability, troubleshooting and security</td>
+</tr>
+<tr>
+<td>Purchase information</td>
+<td>Subscription status and
                     transaction references, when applicable</td>
-                  <td>Providing purchased features
+<td>Providing purchased features
                     and managing entitlements</td>
-                </tr>
-                <tr>
-                  <td>Support communications</td>
-                  <td>Messages and information you send
+</tr>
+<tr>
+<td>Support communications</td>
+<td>Messages and information you send
                     when requesting assistance</td>
-                  <td>Responding to questions and requests</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p>
+<td>Responding to questions and requests</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
             Information may come directly from you,
             from your use of StudyBolt, or from authentication,
             payment, infrastructure, and other service providers.
           </p>
-
-          <p>
+<p>
             We do not need every category of information for
             every feature. Some features may work with less
             information than others.
           </p>
-        </section>
-
-        <!-- 3 -->
-        <section id="study-content" class="policy-section reveal">
-          <div class="section-heading">
-            <span class="section-icon">✦</span>
-            <h2>03. Study materials and AI processing</h2>
-          </div>
-
-          <p>
+</section>
+<!-- 3 -->
+<section class="policy-section reveal" id="study-content">
+<div class="section-heading">
+<span class="section-icon">✦</span>
+<h2>03. Study materials and AI processing</h2>
+</div>
+<p>
             StudyBolt may process materials you choose to upload
             or create, including PDF files, slide presentations,
             text notes, and other supported educational content.
           </p>
-
-          <h3>How study content is used</h3>
-          <ul>
-            <li>Extracting supported text and study information.</li>
-            <li>Creating notes, summaries, flashcards and quizzes.</li>
-            <li>Generating or preparing audio study content.</li>
-            <li>Saving and displaying materials in your library.</li>
-            <li>Supporting learning progress and study organization.</li>
-          </ul>
-
-          <h3>AI-assisted features</h3>
-          <p>
-            Certain features may use automated processing or
-            AI technologies to transform learning materials.
-            Where third-party AI services receive personal
-            data, StudyBolt must identify the relevant providers,
-            explain what is shared, and obtain any permission
-            required by applicable law and platform rules.
-          </p>
-
-          <p>
+<p>Study libraries and uploaded study materials are <strong>private by default</strong>. Public discovery and link-based sharing are disabled for the initial production release. If sharing becomes available later, it will require a user-initiated action and updated disclosures as necessary.</p><h3>How study content is used</h3>
+<ul>
+<li>Extracting supported text and study information.</li>
+<li>Creating notes, summaries, flashcards and quizzes.</li>
+<li>Generating or preparing audio study content.</li>
+<li>Saving and displaying materials in your library.</li>
+<li>Supporting learning progress and study organization.</li>
+</ul>
+<h3>AI-assisted features</h3>
+<p>StudyBolt uses automated processing and may transmit the content needed for a requested AI Tutor, summary, flashcard, quiz, or study-audio feature to an AI service provider. Such content may include excerpts from uploaded documents, user prompts, and generated responses. AI processing is separate from publicly sharing your study materials. Where personal data is shared with a third-party AI provider, the app must disclose that processing and obtain permission before sharing where required by applicable law and platform rules. If the app has not yet presented the necessary permission, the affected feature should not transmit that personal data.</p>
+<p>
             You should avoid uploading sensitive personal
             information, confidential third-party documents,
             or material you are not authorized to process.
           </p>
-
-          <div class="info-box">
+<div class="info-box">
             Important: AI outputs may contain errors.
             Review generated summaries, answers, and study
             content before relying on them for important decisions.
           </div>
-
-          <h3>Model training</h3>
-          <p>
-            [INSERT VERIFIED DISCLOSURE: State whether uploaded
-            study materials or AI inputs and outputs are used
-            to train, evaluate, or improve AI models, including
-            any third-party provider's applicable practices.]
-          </p>
-        </section>
-
-        <!-- 4 -->
-        <section id="usage" class="policy-section reveal">
-          <div class="section-heading">
-            <span class="section-icon">⚙</span>
-            <h2>04. How we use information</h2>
-          </div>
-
-          <p>We may use information to:</p>
-
-          <ul>
-            <li>Provide and maintain the StudyBolt Service.</li>
-            <li>Authenticate accounts and manage user sessions.</li>
-            <li>Process study materials and generate requested results.</li>
-            <li>Save your learning progress and preferences.</li>
-            <li>Deliver relevant account and service notifications.</li>
-            <li>Diagnose errors and improve app performance.</li>
-            <li>Detect abuse, unauthorized access and security incidents.</li>
-            <li>Provide customer support.</li>
-            <li>Administer subscriptions, if available.</li>
-            <li>Comply with applicable legal obligations.</li>
-          </ul>
-
-          <p>
+<h3>Model training</h3>
+<p>StudyBolt uses submitted content to generate the study results you request. Whether an AI provider retains inputs and outputs or uses them to improve its models depends on the provider and the settings of the production integration. We do not represent that all AI inputs are immediately deleted or excluded from model improvement without verification. You may contact us for information about the provider and processing applicable to your request. Do not include confidential or highly sensitive information in AI prompts or uploads.</p>
+</section>
+<!-- 4 -->
+<section class="policy-section reveal" id="usage">
+<div class="section-heading">
+<span class="section-icon">⚙</span>
+<h2>04. How we use information</h2>
+</div>
+<p>We may use information to:</p>
+<ul>
+<li>Provide and maintain the StudyBolt Service.</li>
+<li>Authenticate accounts and manage user sessions.</li>
+<li>Process study materials and generate requested results.</li>
+<li>Save your learning progress and preferences.</li>
+<li>Deliver relevant account and service notifications.</li>
+<li>Diagnose errors and improve app performance.</li>
+<li>Detect abuse, unauthorized access and security incidents.</li>
+<li>Provide customer support.</li>
+<li>Administer subscriptions, if available.</li>
+<li>Comply with applicable legal obligations.</li>
+</ul>
+<p>
             We aim to process only the information reasonably
             necessary for the relevant purpose.
           </p>
-        </section>
-
-        <!-- 5 -->
-        <section id="sharing" class="policy-section reveal">
-          <div class="section-heading">
-            <span class="section-icon">◇</span>
-            <h2>05. Sharing and service providers</h2>
-          </div>
-
-          <p>
+</section>
+<!-- 5 -->
+<section class="policy-section reveal" id="sharing">
+<div class="section-heading">
+<span class="section-icon">◇</span>
+<h2>05. Sharing and service providers</h2>
+</div>
+<p>
             StudyBolt may rely on service providers to operate
             features such as authentication, file storage,
             AI processing, diagnostics, and payments.
           </p>
-
-          <p>
+<p>
             Categories of recipients may include:
           </p>
-
-          <ul>
-            <li>
-              <strong>Infrastructure and storage providers:</strong>
+<ul>
+<li>
+<strong>Infrastructure and storage providers:</strong>
               hosting application services and storing data.
             </li>
-            <li>
-              <strong>Authentication providers:</strong>
+<li>
+<strong>Authentication providers:</strong>
               supporting account creation and sign-in.
             </li>
-            <li>
-              <strong>AI processing providers:</strong>
+<li>
+<strong>AI processing providers:</strong>
               processing content for supported AI features,
               where used.
             </li>
-            <li>
-              <strong>Diagnostics providers:</strong>
+<li>
+<strong>Diagnostics providers:</strong>
               detecting crashes, errors and service issues,
               where enabled.
             </li>
-            <li>
-              <strong>App stores and payment providers:</strong>
+<li>
+<strong>App stores and payment providers:</strong>
               processing purchases and subscriptions,
               where applicable.
             </li>
-          </ul>
-
-          <p>
-            [INSERT VERIFIED PROVIDER LIST: Identify the actual
-            production providers that receive user information,
-            what they receive, their purpose, and links to
-            their privacy policies as appropriate.]
-          </p>
-
-          <p>
-            We require third parties processing user data
-            on our behalf to provide appropriate privacy
-            and security protections consistent with
-            this policy and applicable requirements.
-          </p>
-
-          <h3>Sale and advertising-related sharing</h3>
-          <p>
-            [INSERT VERIFIED DISCLOSURE: Explain whether StudyBolt
-            sells personal information, shares it for
-            cross-context behavioral advertising, uses
-            advertising identifiers, or enables targeted
-            advertising. Include required opt-out methods
-            if any such processing occurs.]
-          </p>
-
-          <p>
+</ul>
+<p>StudyBolt’s production architecture includes <strong>self-hosted Supabase services</strong> for authentication and app data, hosted on a <strong>Contabo</strong> server managed through <strong>Coolify</strong>; <strong>Apple Sign-In</strong> for authentication; and <strong>Apple App Store</strong> and <strong>RevenueCat</strong> for subscription purchases and entitlement management. These services may receive account identifiers, authentication tokens, stored study information, technical information, or purchase status as necessary for their roles. AI model services may receive study excerpts and prompts when you request AI features. Other sign-in and diagnostic integrations are used only if enabled in the deployed app. See <a href="https://supabase.com/privacy" rel="noopener noreferrer" target="_blank">Supabase</a>, <a href="https://contabo.com/en/legal/privacy/" rel="noopener noreferrer" target="_blank">Contabo</a>, <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer" target="_blank">Apple</a>, and <a href="https://www.revenuecat.com/privacy/" rel="noopener noreferrer" target="_blank">RevenueCat</a> for their published privacy information. Additional providers may be involved in requested AI features or app diagnostics where enabled; we will provide the relevant information and obtain required permissions.</p>
+<p>We select service providers based on their roles and applicable terms, and use technical and contractual safeguards where available and appropriate. Providers may process information under their own privacy notices and agreements as well as our instructions.</p>
+<h3>Sale and advertising-related sharing</h3>
+<p>StudyBolt is designed as a study service, not an advertising network. We do not presently describe or authorize the sale of users’ uploaded study materials or disclosure of private study sets to advertisers. We do not intentionally make private study libraries publicly available. If we later introduce advertising, cross-context behavioral targeting, or a practice legally considered a sale or sharing of personal information, we will update this policy and provide legally required notice, consent, and opt-out choices before enabling it. Any applicable privacy choices will be provided as required by law.</p>
+<p>
             We may also disclose information when legally
             required or when reasonably necessary to protect
             users, the Service, or the rights of others,
             subject to applicable law.
           </p>
-        </section>
-
-        <!-- 6 -->
-        <section id="security" class="policy-section reveal">
-          <div class="section-heading">
-            <span class="section-icon">♢</span>
-            <h2>06. Data security</h2>
-          </div>
-
-          <p>
+</section>
+<!-- 6 -->
+<section class="policy-section reveal" id="security">
+<div class="section-heading">
+<span class="section-icon">♢</span>
+<h2>06. Data security</h2>
+</div>
+<p>
             We take the security of account information and
             educational content seriously. We use safeguards
             designed to protect data against unauthorized
             access, alteration, disclosure, and loss.
           </p>
-
-          <p>
+<p>
             Depending on the relevant system, these may include
             encryption during transmission, access controls,
             authenticated sessions, restricted server access,
             and operational monitoring.
           </p>
-
-          <p>
+<p>
             No transmission, server, or storage system can
             be guaranteed to be completely secure. Users
             should protect their sign-in credentials and
             keep their devices updated.
           </p>
-
-          <div class="info-box">
+<div class="info-box">
             If you suspect unauthorized access to your account,
             contact StudyBolt support using the information
             at the end of this page.
           </div>
-        </section>
-
-        <!-- 7 -->
-        <section id="retention" class="policy-section reveal">
-          <div class="section-heading">
-            <span class="section-icon">◷</span>
-            <h2>07. Data retention and deletion</h2>
-          </div>
-
-          <p>
+</section>
+<!-- 7 -->
+<section class="policy-section reveal" id="retention">
+<div class="section-heading">
+<span class="section-icon">◷</span>
+<h2>07. Data retention and deletion</h2>
+</div>
+<p>
             StudyBolt retains information only for periods
             appropriate to the purposes described in this
             policy, subject to legal, security, and operational
             obligations.
           </p>
-
-          <p>
+<p>
             Different kinds of information may have different
             retention periods, including:
           </p>
-
-          <ul>
-            <li>
-              <strong>Account information:</strong>
+<ul>
+<li>
+<strong>Account information:</strong>
               while needed to maintain the account,
               unless otherwise required by law.
             </li>
-            <li>
-              <strong>Study materials and learning records:</strong>
+<li>
+<strong>Study materials and learning records:</strong>
               according to the app's storage and deletion
               functionality.
             </li>
-            <li>
-              <strong>Diagnostics and security logs:</strong>
+<li>
+<strong>Diagnostics and security logs:</strong>
               for a limited operational or security period.
             </li>
-            <li>
-              <strong>Transaction records:</strong>
+<li>
+<strong>Transaction records:</strong>
               as necessary for billing, accounting,
               disputes or legal compliance.
             </li>
-          </ul>
-
-          <p>
-            [INSERT VERIFIED RETENTION SCHEDULE: Specify actual
-            deletion periods for account data, uploaded files,
-            backups, logs, and AI processing records,
-            including any exceptions.]
-          </p>
-
-          <h3>Deleting your account</h3>
-          <p>
+</ul>
+<p>Account records, saved study materials, and learning history are generally maintained while the account or corresponding content remains active. When an account or item is deleted, associated active-service data is scheduled for removal in accordance with the implemented deletion workflow; limited data may remain temporarily in backups, system logs, payment records, or where legal and security obligations require it. AI providers may have separate retention periods. Exact backup, diagnostic-log, and provider retention windows depend on the deployed systems and are not represented here as immediate or fixed-duration deletion.</p>
+<h3>Deleting your account</h3>
+<p>
             You may request deletion of your StudyBolt account
             and associated personal information through the
             available in-app account deletion controls
             or by contacting support.
           </p>
-
-          <p>
+<p>
             Account deletion may be subject to limited retention
             required for legal compliance, fraud prevention,
             security, or other lawful purposes.
           </p>
-
-          <p>
-            [VERIFY: Describe the exact in-app deletion path,
-            expected processing timeframe, and whether
-            any study content remains on a user's device.]
-          </p>
-
-          <p>
+<p>Use the account deletion control available from your StudyBolt account settings, or email <a href="mailto:lecoffeeconfit@gmail.com?subject=StudyBolt%20Account%20Deletion">lecoffeeconfit@gmail.com</a> to request help. We may verify that you control the account before acting. We will process verified requests as required by applicable law and inform you if an exception applies. Removing the app from your device does not, by itself, delete a server-side account or cancel an App Store subscription.</p>
+<p>
             Deleting an account does not necessarily cancel
             an active subscription managed by Apple,
             Google, or another billing provider.
             Such subscriptions must be managed through
             the relevant provider's subscription settings.
           </p>
-        </section>
-
-        <!-- 8 -->
-        <section id="choices" class="policy-section reveal">
-          <div class="section-heading">
-            <span class="section-icon">☷</span>
-            <h2>08. Your privacy choices</h2>
-          </div>
-
-          <p>
+</section>
+<!-- 8 -->
+<section class="policy-section reveal" id="choices">
+<div class="section-heading">
+<span class="section-icon">☷</span>
+<h2>08. Your privacy choices</h2>
+</div>
+<p>
             Depending on your location and the available
             features, you may be able to:
           </p>
-
-          <ul>
-            <li>Access and update account information.</li>
-            <li>Delete individual study materials.</li>
-            <li>Request access to or a copy of your personal data.</li>
-            <li>Request correction or deletion of personal data.</li>
-            <li>Withdraw consent for optional processing.</li>
-            <li>Adjust supported notification permissions.</li>
-            <li>Request information about service providers.</li>
-            <li>Close your account.</li>
-          </ul>
-
-          <p>
+<ul>
+<li>Access and update account information.</li>
+<li>Delete individual study materials.</li>
+<li>Request access to or a copy of your personal data.</li>
+<li>Request correction or deletion of personal data.</li>
+<li>Withdraw consent for optional processing.</li>
+<li>Adjust supported notification permissions.</li>
+<li>Request information about service providers.</li>
+<li>Close your account.</li>
+</ul>
+<p>
             You can manage device-level permissions through
             your phone's operating system settings.
             Withdrawing consent may affect features
             that depend on that permission.
           </p>
-
-          <p>
+<p>
             For additional privacy requests, contact us
             using the details below.
           </p>
-        </section>
-
-        <!-- 9 -->
-        <section id="international" class="policy-section reveal">
-          <div class="section-heading">
-            <span class="section-icon">◎</span>
-            <h2>09. International data processing</h2>
-          </div>
-
-          <p>
+</section>
+<!-- 9 -->
+<section class="policy-section reveal" id="international">
+<div class="section-heading">
+<span class="section-icon">◎</span>
+<h2>09. International data processing</h2>
+</div>
+<p>
             Depending on StudyBolt's hosting arrangements
             and service providers, your information may
             be processed in countries other than the
             country in which you reside.
           </p>
-
-          <p>
+<p>
             Where applicable law requires additional
             safeguards for international transfers,
             we will use appropriate measures.
           </p>
-
-          <p>
-            [VERIFY: Specify relevant hosting regions,
-            international transfer arrangements, and any
-            required transfer safeguards.]
-          </p>
-        </section>
-
-        <!-- 10 -->
-        <section id="children" class="policy-section reveal">
-          <div class="section-heading">
-            <span class="section-icon">♡</span>
-            <h2>10. Children's privacy</h2>
-          </div>
-
-          <p>
-            StudyBolt is an educational tool. Its availability
-            to children and teenagers depends on its intended
-            audience, app-store age rating, applicable laws,
-            and account configuration.
-          </p>
-
-          <p>
-            [INSERT VERIFIED AGE POLICY: State the minimum
-            permitted age, whether StudyBolt is directed
-            toward children, whether parental consent is
-            required, and how underage data is handled.]
-          </p>
-
-          <p>
+<p>StudyBolt uses a self-hosted backend and external identity, infrastructure, and subscription services. The physical locations where information is processed can vary by hosting region, service provider, and support access. International transfers, if any, are subject to the safeguards required by applicable law. For information about the processing locations relevant to your account, contact privacy support.</p>
+</section>
+<!-- 10 -->
+<section class="policy-section reveal" id="children">
+<div class="section-heading">
+<span class="section-icon">♡</span>
+<h2>10. Children's privacy</h2>
+</div>
+<p>StudyBolt is an educational service for students and independent learners, including teenagers. For the current consumer release, StudyBolt is intended for users <strong>age 13 and older</strong> and is not designed for use by children under 13. Users who are minors must have a parent or guardian review their use of the Service and provide authorization when required by applicable law. In some regions, additional age-related consent rules apply.</p>
+<p>We do not knowingly collect personal information from children under 13 through this consumer service. If we learn that a child under 13 has supplied personal information, we will review the account, restrict further processing, and delete the information as required by applicable law. Parents and guardians can contact us to request review or deletion. StudyBolt does not currently offer a separate school-managed or parental-consent onboarding program for children under 13.</p>
+<p>
             If you believe a child has provided personal
             information in a manner inconsistent with
             applicable requirements, contact support
             so the matter can be reviewed.
           </p>
-        </section>
-
-        <!-- 11 -->
-        <section id="rights" class="policy-section reveal">
-          <div class="section-heading">
-            <span class="section-icon">⚖</span>
-            <h2>11. Privacy rights by region</h2>
-          </div>
-
-          <h3>California and other U.S. states</h3>
-          <p>
+</section>
+<!-- 11 -->
+<section class="policy-section reveal" id="rights">
+<div class="section-heading">
+<span class="section-icon">⚖</span>
+<h2>11. Privacy rights by region</h2>
+</div>
+<h3>California and other U.S. states</h3>
+<p>
             Residents of certain U.S. states may have
             rights to know, access, correct, delete,
             or obtain copies of personal information,
             and to opt out of certain uses of data,
             subject to applicable laws and exceptions.
           </p>
-
-          <p>
+<p>
             We will not discriminate against users
             for exercising applicable privacy rights.
           </p>
-
-          <p>
-            [IF APPLICABLE: Include the detailed California
-            disclosures for categories collected and disclosed
-            during the relevant reporting period, sources,
-            purposes, retention, sale/sharing status,
-            sensitive information, and legally required
-            request or appeal methods.]
-          </p>
-
-          <h3>European Economic Area and United Kingdom</h3>
-          <p>
+<p>The information categories described in Section 02 are collected from users, their activity in StudyBolt, and service providers for the purposes described in Sections 03–05. We disclose information to operational service providers as described in Section 05. If applicable privacy law grants you additional rights concerning sale or sharing, sensitive information, appeal, or authorized agents, contact us using Section 13; we will evaluate and honor eligible requests as required by that law.</p>
+<h3>European Economic Area and United Kingdom</h3>
+<p>
             Where the GDPR or UK GDPR applies, individuals
             may have rights including access, rectification,
             erasure, restriction, portability, objection,
             and withdrawal of consent.
           </p>
-
-          <p>
+<p>
             Processing may rely on contractual necessity,
             legitimate interests, consent, or compliance
             with legal obligations, depending on the
             particular purpose and applicable law.
           </p>
-
-          <p>
+<p>
             Eligible individuals may also complain to
             their relevant data protection authority.
           </p>
-
-          <p>
-            [IF APPLICABLE: Identify the legal controller,
-            the legal basis for each processing purpose,
-            any required representative or DPO contact,
-            and applicable international transfer safeguards.]
-          </p>
-
-          <h3>Submitting a privacy request</h3>
-          <p>
+<p>For inquiries where European or UK privacy law applies, the StudyBolt operator identified in Section 13 is the contact for questions about personal data processing. Typical purposes include providing requested services (contractual necessity), operating and securing the Service (legitimate interests where permitted), meeting legal obligations, and optional processing based on consent where required. The applicable legal basis depends on the particular activity. You may exercise applicable rights using the contact details below.</p>
+<h3>Submitting a privacy request</h3>
+<p>
             You may contact us using the email address below.
             To protect personal information, we may need
             to verify your identity before fulfilling
             certain requests.
           </p>
-        </section>
-
-        <!-- 12 -->
-        <section id="changes" class="policy-section reveal">
-          <div class="section-heading">
-            <span class="section-icon">↻</span>
-            <h2>12. Changes to this policy</h2>
-          </div>
-
-          <p>
+</section>
+<!-- 12 -->
+<section class="policy-section reveal" id="changes">
+<div class="section-heading">
+<span class="section-icon">↻</span>
+<h2>12. Changes to this policy</h2>
+</div>
+<p>
             We may update this Privacy Policy when our
             features, technologies, operating practices,
             or legal obligations change.
           </p>
-
-          <p>
+<p>
             When we make updates, we will revise the
             effective date shown at the top of this page.
             For material changes, we will provide additional
             notice or request consent when required by law.
           </p>
-
-          <p>
+<p>
             We encourage you to review this policy
             periodically for current information.
           </p>
-        </section>
-
-        <!-- 13 -->
-        <section id="contact" class="policy-section reveal">
-          <div class="section-heading">
-            <span class="section-icon">✉</span>
-            <h2>13. Contact and data controller</h2>
-          </div>
-
-          <p>
+</section>
+<!-- 13 -->
+<section class="policy-section reveal" id="contact">
+<div class="section-heading">
+<span class="section-icon">✉</span>
+<h2>13. Contact and data controller</h2>
+</div>
+<p>
             Questions, account deletion requests,
             concerns about privacy, and applicable
             data rights requests may be directed to:
           </p>
-
-          <p>
-            <strong>Application:</strong> StudyBolt<br>
-            <strong>Operator:</strong>
-            [INSERT LEGAL INDIVIDUAL OR BUSINESS NAME]<br>
-            <strong>Email:</strong>
-            <a href="mailto:lecoffeeconfit@gmail.com">
-              lecoffeeconfit@gmail.com
-            </a><br>
-            <strong>Phone:</strong> <a href="tel:+16265453678">(626) 545-3678</a><br>
-            <strong>Business contact address:</strong>
-            [INSERT ADDRESS IF LEGALLY REQUIRED]
-          </p>
-
-          <p>
+<p><strong>Application:</strong> StudyBolt<br/><strong>Operator and privacy contact:</strong> Howard Tran (individual operator)<br/><strong>Email:</strong> <a href="mailto:lecoffeeconfit@gmail.com">lecoffeeconfit@gmail.com</a><br/><strong>Phone:</strong> <a href="tel:+16265453678">(626) 545-3678</a><br/><strong>Location:</strong> California, United States<br/>For postal correspondence or legally required service of notices, contact us by email to request the appropriate address.</p>
+<p>
             Please include enough information for us to
             understand and respond to your request.
             Do not email passwords or unnecessary sensitive
             documents.
           </p>
-        </section>
-
-        <!-- FINAL CONTACT CARD -->
-        <div class="contact-card reveal">
-          <div style="font-size:32px;color:#7be4e1"
-               aria-hidden="true">✧</div>
-
-          <h2>Have a privacy question?</h2>
-
-          <p>
+</section>
+<!-- FINAL CONTACT CARD -->
+<div class="contact-card reveal">
+<div aria-hidden="true" style="font-size:32px;color:#7be4e1">✧</div>
+<h2>Have a privacy question?</h2>
+<p>
             We're here to help you understand and
             manage your information.
           </p>
-
-          <a class="contact-button"
-             href="mailto:lecoffeeconfit@gmail.com?subject=StudyBolt%20Privacy%20Inquiry">
+<a class="contact-button" href="mailto:lecoffeeconfit@gmail.com?subject=StudyBolt%20Privacy%20Inquiry">
             Contact Privacy Support
           </a>
-        </div>
-
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    <div class="footer-brand">StudyBolt ⚡</div>
-    <div>Learn smarter. Stay in control.</div>
-
-    <div class="footer-links">
-      <a href="#top">Back to top</a>
-      <a href="#contact">Contact</a>
-      <a href="#choices">Privacy choices</a>
-    </div>
-
-    <p>© <span id="year"></span> StudyBolt.
+</div>
+</div>
+</div>
+</main>
+<footer>
+<div class="footer-brand">StudyBolt ⚡</div>
+<div>Learn smarter. Stay in control.</div>
+<div class="footer-links">
+<a href="#top">Back to top</a>
+<a href="#contact">Contact</a>
+<a href="#choices">Privacy choices</a>
+</div>
+<p>© <span id="year"></span> StudyBolt.
       All rights reserved.
     </p>
-  </footer>
-
-  <script>
+</footer>
+<script>
     // Update copyright year automatically.
     document.getElementById("year").textContent =
       new Date().getFullYear();
+
+
+    // Theme toggle with preference memory.
+    const themeToggle = document.getElementById("themeToggle");
+    const themeLabel = themeToggle?.querySelector(".theme-toggle-label");
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+    function applyTheme(theme) {
+      document.body.setAttribute("data-theme", theme);
+      const isLight = theme === "light";
+      if (themeToggle) {
+        themeToggle.setAttribute("aria-pressed", String(isLight));
+        themeToggle.setAttribute("aria-label", isLight ? "Switch to dark mode" : "Switch to light mode");
+        themeToggle.setAttribute("title", isLight ? "Switch to dark mode" : "Switch to light mode");
+      }
+      if (themeLabel) {
+        themeLabel.textContent = isLight ? "Light mode" : "Dark mode";
+      }
+      if (themeMeta) {
+        themeMeta.setAttribute("content", isLight ? "#f5f8ff" : "#080f1f");
+      }
+    }
+
+    const savedTheme = localStorage.getItem("studybolt-privacy-theme");
+    const preferredTheme = savedTheme || (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    applyTheme(preferredTheme);
+
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        const current = document.body.getAttribute("data-theme") === "light" ? "light" : "dark";
+        const next = current === "light" ? "dark" : "light";
+        localStorage.setItem("studybolt-privacy-theme", next);
+        applyTheme(next);
+      });
+    }
 
     // Gentle entrance animations.
     const revealElements =
@@ -1458,6 +1534,5 @@
       });
     }
   </script>
-
 </body>
 </html>
