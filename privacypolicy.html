@@ -4,9 +4,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#080f1f" />
+  <meta name="theme-color" content="#f7f9fd" />
   <meta name="description" content="Learn how StudyBolt protects your privacy, study materials, and personal information." />
   <title>Privacy Policy | StudyBolt</title>
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem("studybolt-legal-theme");
+        const prefersDark = typeof window.matchMedia === "function" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme =
+          saved === "light" || saved === "dark" ? saved : (prefersDark ? "dark" : "light");
+      } catch {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
 
   <style>
     :root {
@@ -219,7 +232,7 @@
 
     .check-path {
       fill: none;
-      stroke: #91fff0;
+      stroke: #ffcb3d;
       stroke-width: 6;
       stroke-linecap: round;
       stroke-linejoin: round;
@@ -650,9 +663,12 @@
       .container { padding: 0; }
     }
   </style>
+  <link rel="stylesheet" href="legal-theme.css" />
+  <script src="legal-theme.js" defer></script>
 </head>
 
 <body>
+  <div id="progress" aria-hidden="true"></div>
 
   <!-- TOP BAR -->
   <nav class="nav" aria-label="Main navigation">
@@ -669,9 +685,14 @@
       </a>
 
       <div class="nav-actions">
-        <a href="#overview" class="nav-link">Overview</a>
-        <a href="#contact" class="nav-link">Contact</a>
-        <span class="nav-pill">Privacy Center</span>
+        <a href="privacypolicy.html" class="nav-link" aria-current="page">Privacy</a>
+        <a href="termsofservice.html" class="nav-link">Terms</a>
+        <a href="#contact" class="nav-link nav-contact">Contact</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false">
+          <svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.3 15.1A8.3 8.3 0 0 1 8.9 3.7 8.5 8.5 0 1 0 20.3 15.1Z"/></svg>
+          <svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+          <span class="theme-toggle-label">Dark theme</span>
+        </button>
       </div>
     </div>
   </nav>
@@ -688,8 +709,8 @@
         <svg viewBox="0 0 120 140">
           <defs>
             <linearGradient id="shieldGradient" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#9bbaff" />
-              <stop offset="100%" stop-color="#63eee1" />
+              <stop offset="0%" stop-color="#1678ff" />
+              <stop offset="100%" stop-color="#ffcb3d" />
             </linearGradient>
           </defs>
           <path class="shield-path"
@@ -1353,7 +1374,7 @@
 
         <!-- FINAL CONTACT CARD -->
         <div class="contact-card reveal">
-          <div style="font-size:32px;color:#7be4e1"
+          <div class="contact-mark"
                aria-hidden="true">✧</div>
 
           <h2>Have a privacy question?</h2>
@@ -1375,10 +1396,12 @@
 
   <footer>
     <div class="footer-brand">StudyBolt ⚡</div>
-    <div>Learn smarter. Stay in control.</div>
+    <div>Study smarter. Learn with confidence.</div>
 
     <div class="footer-links">
       <a href="#top">Back to top</a>
+      <a href="privacypolicy.html" aria-current="page">Privacy Policy</a>
+      <a href="termsofservice.html">Terms of Service</a>
       <a href="#contact">Contact</a>
       <a href="#choices">Privacy choices</a>
     </div>
@@ -1456,6 +1479,23 @@
         sectionObserver.observe(section);
       });
     }
+
+    // Keep the reading indicator subtle and in sync with the current scroll.
+    const progressBar = document.getElementById("progress");
+    let progressFramePending = false;
+    const updateReadingProgress = () => {
+      const page = document.documentElement;
+      const scrollable = page.scrollHeight - page.clientHeight;
+      const percent = scrollable > 0 ? (page.scrollTop / scrollable) * 100 : 100;
+      progressBar.style.width = `${Math.max(0, Math.min(100, percent))}%`;
+      progressFramePending = false;
+    };
+    window.addEventListener("scroll", () => {
+      if (progressFramePending) return;
+      progressFramePending = true;
+      window.requestAnimationFrame(updateReadingProgress);
+    }, { passive: true });
+    updateReadingProgress();
   </script>
 
 </body>
