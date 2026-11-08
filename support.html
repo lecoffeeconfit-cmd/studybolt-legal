@@ -1,0 +1,762 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#eff6ff">
+<meta name="description" content="Official StudyBolt support center. Get help with PowerPoint uploads, study sets, flashcards, quizzes, StudyCast, subscriptions and your account.">
+<title>Support Center | StudyBolt</title>
+<link rel="icon" type="image/png" href="studybolt-logo.png">
+
+<style>
+:root {
+  color-scheme: light;
+  --bg:#f5f8ff;
+  --surface:#fff;
+  --ink:#14223b;
+  --muted:#62738e;
+  --line:#dce6f4;
+  --blue:#3469ef;
+  --soft:#eaf2ff;
+  --shadow:0 16px 50px rgba(25,65,130,.08);
+}
+[data-theme="dark"] {
+  color-scheme:dark;
+  --bg:#091424;
+  --surface:#122139;
+  --ink:#edf5ff;
+  --muted:#aabbd4;
+  --line:#29405e;
+  --blue:#80abff;
+  --soft:#1b3454;
+  --shadow:0 16px 50px rgba(0,0,0,.18);
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,
+       "Segoe UI",sans-serif;
+  transition:background .3s,color .3s;
+}
+a { color:var(--blue);text-underline-offset:3px; }
+button,input { font:inherit; }
+button { cursor:pointer; }
+a:focus-visible,button:focus-visible,
+input:focus-visible,summary:focus-visible {
+  outline:3px solid var(--blue);
+  outline-offset:3px;
+}
+.ambient {
+  position:absolute;
+  inset:0 0 auto;
+  height:650px;
+  z-index:-1;
+  pointer-events:none;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 15% 12%,
+      rgba(74,145,255,.18),transparent 45%),
+    radial-gradient(ellipse at 85% 4%,
+      rgba(81,201,255,.15),transparent 38%);
+}
+.orb {
+  position:absolute;
+  border:1px solid rgba(100,170,255,.25);
+  border-radius:50%;
+  animation:float 9s ease-in-out infinite;
+}
+.orb.one {
+  width:220px;height:220px;right:7%;top:100px;
+}
+.orb.two {
+  width:90px;height:90px;left:8%;top:240px;
+  animation-delay:-3s;
+}
+@keyframes float {
+  50% { transform:translateY(-23px) rotate(8deg); }
+}
+@keyframes appear {
+  from {opacity:0;transform:translateY(17px);}
+  to {opacity:1;transform:translateY(0);}
+}
+.wrap { max-width:1100px;margin:auto;padding:0 24px; }
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  padding-top:25px;
+  padding-bottom:25px;
+}
+.brand {
+  display:flex;align-items:center;gap:12px;
+  text-decoration:none;color:var(--ink);
+  font-size:1.2rem;font-weight:800;
+  letter-spacing:-.035em;
+}
+.logo {
+  width:48px;height:48px;
+  border-radius:14px;
+  object-fit:cover;
+  box-shadow:0 7px 20px rgba(39,110,230,.2);
+}
+.nav {display:flex;align-items:center;gap:22px;}
+.nav a {
+  color:var(--muted);
+  font-size:.9rem;font-weight:650;
+  text-decoration:none;
+}
+.nav a:hover { color:var(--blue); }
+.theme {
+  background:var(--surface);
+  color:var(--ink);
+  border:1px solid var(--line);
+  border-radius:100px;
+  padding:9px 15px;
+  font-weight:700;
+}
+.hero {
+  text-align:center;
+  padding:72px 0 69px;
+  animation:appear .7s ease both;
+}
+.eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  border:1px solid var(--line);
+  background:var(--surface);
+  border-radius:100px;
+  padding:7px 15px;
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--blue);
+}
+.pulse {
+  width:8px;height:8px;
+  background:#46bb91;border-radius:50%;
+  box-shadow:0 0 0 5px rgba(70,187,145,.12);
+}
+h1 {
+  max-width:850px;
+  margin:23px auto 18px;
+  font-size:clamp(2.7rem,6.5vw,5.2rem);
+  line-height:1.1;
+  letter-spacing:-.065em;
+}
+h1 span {
+  background:linear-gradient(90deg,#3469ef,#4ab5ed);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.subtitle {
+  margin:auto;max-width:650px;
+  color:var(--muted);font-size:1.12rem;
+}
+.actions {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;margin-top:30px;
+}
+.btn {
+  display:inline-flex;
+  justify-content:center;align-items:center;
+  gap:8px;
+  padding:12px 19px;
+  border-radius:14px;
+  font-weight:750;
+  text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn:hover { transform:translateY(-3px); }
+.primary {
+  background:linear-gradient(120deg,#2866ec,#4c94f5);
+  color:white;
+  box-shadow:0 10px 25px rgba(40,100,235,.22);
+}
+.secondary {
+  background:var(--surface);color:var(--ink);
+  border:1px solid var(--line);
+}
+.section {padding:28px 0 45px;}
+.section h2 {
+  font-size:clamp(1.55rem,3vw,2.1rem);
+  letter-spacing:-.045em;
+  margin:0 0 5px;
+}
+.section-desc {
+  color:var(--muted);
+  margin:0 0 24px;
+}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:17px;
+}
+.card {
+  padding:25px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:21px;
+  box-shadow:var(--shadow);
+  transition:transform .2s,border-color .2s;
+}
+.card:hover {
+  transform:translateY(-4px);
+  border-color:var(--blue);
+}
+.card-icon {
+  display:grid;place-items:center;
+  width:48px;height:48px;
+  border-radius:14px;
+  background:var(--soft);
+  color:var(--blue);
+  font-size:1.5rem;
+  margin-bottom:17px;
+}
+.card h3 {margin:0 0 7px;font-size:1.07rem;}
+.card p {margin:0;color:var(--muted);font-size:.94rem;}
+.contact-grid {
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:18px;
+}
+.contact-panel {
+  padding:31px;
+  border-radius:23px;
+  background:linear-gradient(140deg,#1e4cb9,#2e7ce7);
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.contact-panel:after {
+  content:"✦";position:absolute;right:18px;top:-75px;
+  font-size:240px;opacity:.06;pointer-events:none;
+}
+.contact-panel h3 {font-size:1.6rem;margin:0 0 10px;}
+.contact-panel p {color:#e4edff;}
+.contact-links {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:13px;
+  margin-top:21px;
+}
+.contact-links a {
+  color:#fff;
+  font-weight:750;
+  overflow-wrap:anywhere;
+}
+.contact-panel small {
+  display:block;margin-top:22px;
+  color:#e4edff;
+}
+.note {
+  padding:28px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:23px;
+}
+.note h3 {margin:0 0 13px;}
+.note ul {margin:0;padding-left:20px;color:var(--muted);}
+.note li+li {margin-top:8px;}
+.note p {color:var(--muted);font-size:.9rem;}
+.search {
+  width:100%;max-width:550px;
+  background:var(--surface);
+  color:var(--ink);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px 16px;
+  margin:10px 0 21px;
+}
+.faq-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
+}
+details {
+  align-self:start;
+  padding:18px 20px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:16px;
+}
+summary {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  cursor:pointer;
+  font-weight:750;
+  line-height:1.4;
+  list-style:none;
+}
+summary::-webkit-details-marker {display:none;}
+summary:after {
+  content:"+";
+  font-size:1.35rem;
+  color:var(--blue);
+}
+details[open] summary:after {content:"−";}
+details p {
+  color:var(--muted);
+  margin:13px 0 1px;
+  font-size:.94rem;
+}
+details a {overflow-wrap:anywhere;}
+.hidden {display:none!important;}
+#noMatches {display:none;color:var(--muted);}
+.bottom {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  margin:25px 0 55px;
+  padding:28px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:23px;
+}
+.bottom h2 {margin:0 0 5px;}
+.bottom p {margin:0;color:var(--muted);}
+footer {
+  border-top:1px solid var(--line);
+  padding:28px 0 38px;
+  color:var(--muted);
+  font-size:.9rem;
+}
+.footer-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
+.footer-links {
+  display:flex;flex-wrap:wrap;gap:17px;
+}
+.footer-links a {color:var(--muted);}
+@media(max-width:780px) {
+  .cards,.contact-grid,.faq-grid {
+    grid-template-columns:1fr;
+  }
+  .nav {gap:11px;}
+  .hero {padding:45px 0;}
+  .bottom {flex-direction:column;align-items:start;}
+}
+@media(max-width:490px) {
+  .wrap {padding:0 17px;}
+  .nav a {display:none;}
+  h1 {font-size:2.7rem;}
+  .hero {padding:40px 0;}
+  .btn {width:100%;}
+  .contact-panel,.note {padding:23px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*:before,*:after {
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="ambient" aria-hidden="true">
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+</div>
+
+<header class="header wrap">
+  <a href="./" class="brand">
+    <img src="studybolt-logo.png"
+         class="logo"
+         width="48"
+         height="48"
+         alt="StudyBolt app logo">
+    StudyBolt
+  </a>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="#help">Help topics</a>
+    <a href="#faq">FAQs</a>
+    <a href="#contact">Contact</a>
+    <button type="button" class="theme" id="themeBtn"
+      aria-label="Toggle light and dark mode">☾ Dark</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+<section class="hero">
+  <div class="eyebrow">
+    <span class="pulse"></span>
+    StudyBolt Support Center
+  </div>
+
+  <h1>A little help.<br>
+    <span>A lot more learning.</span>
+  </h1>
+
+  <p class="subtitle">
+    Questions about importing lectures, building
+    study sets, or managing your account?
+    You're in the right place.
+  </p>
+
+  <div class="actions">
+    <a class="btn primary"
+       href="mailto:lecoffeeconfit@gmail.com?subject=StudyBolt%20Support%20Request">
+       ✉ Contact support
+    </a>
+    <a class="btn secondary" href="#faq">
+      Explore common questions ↓
+    </a>
+  </div>
+</section>
+
+<section class="section" id="help">
+  <h2>What can we help with?</h2>
+  <p class="section-desc">
+    Quick guidance for the tools students use most.
+  </p>
+
+  <div class="cards">
+    <article class="card">
+      <div class="card-icon">▣</div>
+      <h3>PowerPoint & PDF uploads</h3>
+      <p>
+        Import lecture files, troubleshoot uploads,
+        and turn class materials into study resources.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">✦</div>
+      <h3>Study sets & practice</h3>
+      <p>
+        Get help with notes, flashcards, quizzes,
+        study sessions, and StudyCast audio.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">♙</div>
+      <h3>Account & subscriptions</h3>
+      <p>
+        Find guidance on sign-in, purchases,
+        restoring access, privacy and account deletion.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <h2>Talk to a real person</h2>
+  <p class="section-desc">
+    For technical issues, feedback, accessibility
+    needs, or feature ideas.
+  </p>
+
+  <div class="contact-grid">
+    <div class="contact-panel">
+      <h3>We're here to help.</h3>
+      <p>
+        Contact StudyBolt support directly.
+        Report a problem, request assistance,
+        or tell us what would make studying easier.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:lecoffeeconfit@gmail.com?subject=StudyBolt%20Support%20Request">
+          ✉ lecoffeeconfit@gmail.com
+        </a>
+        <a href="tel:+16265453678">
+          ☎ +1 (626) 545-3678
+        </a>
+      </div>
+
+      <small>
+        Email is recommended for troubleshooting
+        so you can include details and screenshots.
+      </small>
+    </div>
+
+    <aside class="note">
+      <h3>When contacting support, include:</h3>
+      <ul>
+        <li>What you were trying to do</li>
+        <li>What happened and any error message</li>
+        <li>Your device and app version, if known</li>
+        <li>A screenshot with private information hidden</li>
+      </ul>
+      <p>
+        <strong>Keep your information safe:</strong>
+        Never email passwords, payment-card numbers,
+        or sensitive school records.
+      </p>
+    </aside>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <h2>Frequently asked questions</h2>
+  <p class="section-desc">
+    Answers to common questions about StudyBolt.
+  </p>
+
+  <label for="faqSearch">
+    <strong>Search help topics</strong>
+  </label>
+  <input class="search" id="faqSearch" type="search"
+    placeholder="Try PowerPoint, quiz, or subscription…"
+    autocomplete="off">
+
+  <div class="faq-grid" id="faqList">
+
+    <details>
+      <summary>How do I turn a PowerPoint into a study set?</summary>
+      <p>
+        Open StudyBolt, select the import or upload
+        option, choose a supported PowerPoint file,
+        and follow the on-screen steps. Once processing
+        finishes, review your generated study resources.
+      </p>
+    </details>
+
+    <details>
+      <summary>My PowerPoint or PDF won't upload. What should I do?</summary>
+      <p>
+        Check your internet connection, confirm the
+        file format is supported, and try a smaller file.
+        Restart the app and retry. If the issue continues,
+        email support with the error message and file size.
+      </p>
+    </details>
+
+    <details>
+      <summary>How do flashcards and quizzes work?</summary>
+      <p>
+        StudyBolt generates review materials from imported
+        course content. Open your study set to access
+        flashcards and practice questions. Check generated
+        answers against your original lecture materials.
+      </p>
+    </details>
+
+    <details>
+      <summary>What is StudyCast?</summary>
+      <p>
+        StudyCast is StudyBolt's audio study experience
+        for listening to supported study materials.
+        Availability may depend on the material,
+        app version, and subscription.
+      </p>
+    </details>
+
+    <details>
+      <summary>What if AI-generated notes are inaccurate?</summary>
+      <p>
+        AI-generated materials can contain errors or
+        missing information. Verify important facts
+        against your lecture slides, readings, and
+        instructor guidance. Report recurring problems
+        to our support team.
+      </p>
+    </details>
+
+    <details>
+      <summary>How do I restore a subscription?</summary>
+      <p>
+        Open StudyBolt's subscription or account screen
+        and select Restore Purchases. Use the same Apple
+        Account as the original purchase. If your access
+        remains unavailable, contact support.
+      </p>
+    </details>
+
+    <details>
+      <summary>How do I cancel my subscription?</summary>
+      <p>
+        On your iPhone, open Settings, tap your name,
+        select Subscriptions, choose StudyBolt, and
+        select Cancel Subscription if available.
+        Deleting StudyBolt does not cancel a subscription.
+        <a href="https://support.apple.com/en-us/118428"
+           target="_blank" rel="noopener noreferrer">
+          Apple's cancellation guide
+        </a>.
+      </p>
+    </details>
+
+    <details>
+      <summary>How can I request a refund?</summary>
+      <p>
+        For purchases billed through Apple, visit
+        <a href="https://reportaproblem.apple.com/"
+           target="_blank" rel="noopener noreferrer">
+          reportaproblem.apple.com
+        </a>.
+        Refund eligibility and decisions are handled
+        by Apple. You can also email StudyBolt support
+        for assistance understanding a charge.
+      </p>
+    </details>
+
+    <details>
+      <summary>I'm having trouble signing in. What should I do?</summary>
+      <p>
+        Check your connection and use the same sign-in
+        method as before. Restart StudyBolt and retry.
+        For Apple sign-in, use the Apple Account originally
+        associated with StudyBolt. Contact support if
+        problems continue.
+      </p>
+    </details>
+
+    <details>
+      <summary>How do I delete my StudyBolt account?</summary>
+      <p>
+        Use the account-deletion option in StudyBolt's
+        account settings if available. If you cannot
+        access the app or need assistance, email
+        <a href="mailto:lecoffeeconfit@gmail.com?subject=StudyBolt%20Account%20Deletion%20Help">
+          lecoffeeconfit@gmail.com
+        </a>.
+        We may verify account ownership before processing
+        your request. Cancel any active Apple subscription
+        separately.
+      </p>
+    </details>
+
+    <details>
+      <summary>Can I report a bug or suggest a feature?</summary>
+      <p>
+        Yes! Email
+        <a href="mailto:lecoffeeconfit@gmail.com?subject=StudyBolt%20Feedback">
+          lecoffeeconfit@gmail.com
+        </a>
+        with your feedback. For bugs, include the steps
+        to reproduce the issue and a screenshot if helpful.
+      </p>
+    </details>
+
+    <details>
+      <summary>Where can I find your privacy policy and terms?</summary>
+      <p>
+        Visit our
+        <a href="privacy.html">Privacy Policy</a>
+        for data-handling information and our
+        <a href="terms.html">Terms of Service</a>
+        for the conditions of using StudyBolt.
+      </p>
+    </details>
+
+  </div>
+
+  <p id="noMatches" role="status">
+    No matching questions found.
+    Please contact our support team directly.
+  </p>
+</section>
+
+<section class="bottom">
+  <div>
+    <h2>Still have a question?</h2>
+    <p>
+      Tell us what you're working on.
+      We'll help you find the next step.
+    </p>
+  </div>
+  <a class="btn primary"
+     href="mailto:lecoffeeconfit@gmail.com?subject=StudyBolt%20Help">
+    Email support ↗
+  </a>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>
+      © <span id="year">2026</span> StudyBolt ·
+      Support by Howard Tran
+    </span>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="mailto:lecoffeeconfit@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const root = document.documentElement;
+  const button = document.getElementById("themeBtn");
+
+  let theme = "light";
+  try {
+    theme = localStorage.getItem("studybolt-theme") ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark" : "light");
+  } catch(e) {}
+
+  function setTheme(value) {
+    root.dataset.theme = value;
+    button.textContent =
+      value === "dark" ? "☀ Light" : "☾ Dark";
+    button.setAttribute("aria-label",
+      value === "dark"
+        ? "Switch to light mode"
+        : "Switch to dark mode");
+  }
+
+  setTheme(theme);
+
+  button.addEventListener("click", function() {
+    theme = root.dataset.theme === "dark"
+      ? "light" : "dark";
+    setTheme(theme);
+    try {
+      localStorage.setItem("studybolt-theme", theme);
+    } catch(e) {}
+  });
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+  const search = document.getElementById("faqSearch");
+  const questions = [...document.querySelectorAll(
+    "#faqList details"
+  )];
+  const empty = document.getElementById("noMatches");
+
+  search.addEventListener("input", function() {
+    const query = search.value.trim().toLowerCase();
+    let count = 0;
+
+    questions.forEach(function(question) {
+      const matches =
+        question.textContent.toLowerCase().includes(query);
+      question.classList.toggle("hidden", !matches);
+      if(matches) count++;
+    });
+
+    empty.style.display = count ? "none" : "block";
+  });
+})();
+</script>
+
+</body>
+</html>
